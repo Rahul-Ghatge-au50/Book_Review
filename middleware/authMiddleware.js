@@ -10,7 +10,7 @@ const authMiddleware = (req,res,next) => {
     try{
         // Verify the token using the JWT secret key
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
-        req.user = decoded.user;
+        req.user = {id:decoded.id};
         next();
     }catch(error){
         res.status(401).json({message:'Not Authorized'});

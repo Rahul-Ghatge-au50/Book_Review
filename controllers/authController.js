@@ -51,13 +51,13 @@ const login = async (req,res) => {
         };
 
         //Creating a token for a user to check the authentication
-        const token = await jwt.sign({id:user.id},process.env.JWT_SECRET,{expiresIn:'30d'})
+        const token = await jwt.sign({id:user.id},process.env.JWT_SECRET,{expiresIn:'1h'})
 
         res.status(200).json({
             token,
             user:{
                 id:user.id,
-                username:user.username,
+                name:user.name,
                 email:user.email
             }
         });
